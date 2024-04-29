@@ -191,7 +191,7 @@ function ChartMaps() {
   };
 
   return (
-    <div className="w-[90%] h-full mt-10 m-auto">
+    <div className="w-[90%] mt-10 m-auto">
       {loading ? (
         <div>Loading...</div>
       ) : (
