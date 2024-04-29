@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { ClipLoader } from "react-spinners";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -155,7 +156,7 @@ function ChartMaps() {
           <MapContainer
             center={[51.505, -0.09]}
             zoom={13}
-            style={{ height: "500px" }}
+            style={{ height: "750px" }}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -193,7 +194,13 @@ function ChartMaps() {
   return (
     <div className="w-[90%] mt-10 m-auto">
       {loading ? (
-        <div>Loading...</div>
+        <div className="flex justify-center items-center h-full">
+          <ClipLoader
+            color="#4682B4"
+            loading={loading}
+            size={150}
+          />
+        </div>
       ) : (
         <Slider {...settings}>
           <div>{renderChart()}</div>

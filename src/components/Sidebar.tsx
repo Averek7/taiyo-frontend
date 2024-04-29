@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className='flex flex-col items-start justify-center gap-4 text-xl font-semibold text-blue-400 mt-8'>
         <p className="">
           <Link to="/" className="">
-            Home
+            Contacts
           </Link>
         </p>
         <p className="">
