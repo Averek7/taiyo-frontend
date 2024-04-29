@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ChartMaps from './components/ChartMaps';
+import Sidebar from './components/Sidebar';
+import Home from './components/Home';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen">
+      <Router>
+        <div className='flex w-full h-full'>
+          <div className='w-[15%] '>
+            <Sidebar />
+          </div>
+          <div className='w-[85%] bg-slate-400 '>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/chartmaps' element={<ChartMaps />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
     </div>
   );
 }
