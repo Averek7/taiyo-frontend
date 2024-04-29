@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart, registerables } from 'chart.js'; // Import Chart.js and its registerables
+import { Chart, registerables } from 'chart.js'; 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Register the time scale adapter
 Chart.register(...registerables);
 
 interface HistoricalData {
@@ -96,8 +95,8 @@ function ChartMaps() {
         
         {/* Map */}
         <div className="w-1/2 p-4">
-          <MapContainer style={{ height: '500px' }}>
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '500px' }}>
+            <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {countryData.map((country) => (
               <Marker key={country.country} position={[country.countryInfo.lat, country.countryInfo.long]}>
                 <Popup>
@@ -106,6 +105,7 @@ function ChartMaps() {
                     <p>Total Cases: {country.cases}</p>
                     <p>Total Deaths: {country.deaths}</p>
                     <p>Total Recovered: {country.recovered}</p>
+                    <p>Total Active: {country.cases - country.deaths - country.recovered}</p>
                   </div>
                 </Popup>
               </Marker>
